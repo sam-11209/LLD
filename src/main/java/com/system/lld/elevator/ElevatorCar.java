@@ -32,7 +32,21 @@ public class ElevatorCar {
     }
 
     // ------------------------------------------------------------------ //
-
+    /**
+     * Adds a floor stop request to the correct TreeSet.
+     *
+     * Logic:
+     *  1. Ignore the request if the floor is not accessible to this car.
+     *  2. If the requested floor is ABOVE the current floor → upStops.
+     *  3. If the requested floor is BELOW the current floor → downStops.
+     *  4. If the elevator is IDLE, decide direction immediately.
+     *
+     * Key insight: we NEVER reject a valid floor request just because
+     * the elevator is currently moving the other way. We park it in the
+     * appropriate TreeSet and it will be served on the return trip.
+     *
+     * @param floor the floor number being requested
+     */
     public void addFloorRequest(int floor) {
         if (!accessibleFloors.isEmpty() && !accessibleFloors.contains(floor)) {
             System.out.println("Car " + id + " cannot access floor " + floor);
@@ -51,7 +65,21 @@ public class ElevatorCar {
     }
 
     // ------------------------------------------------------------------ //
-
+    /**
+     * Returns the next floor this elevator should stop at, based on
+     * the SCAN algorithm:
+     *  • Moving UP  → next floor in upStops that is >= currentFloor.
+     *                 If none left, reverse: take highest from downStops.
+     *  • Moving DOWN→ next floor in downStops that is <= currentFloor.
+     *                 If none left, reverse: take lowest from upStops.
+     *  • IDLE       → -1 (no pending stops).
+     *
+     * This method does NOT advance the elevator; it only reads ahead.
+     * A real simulation would call this in a loop, move to that floor,
+     * then call it again.
+     *
+     * @return next stop floor, or -1 if no pending requests
+     */
     public int getNextStop() {
         int current = status.getCurrentFloor();
 
