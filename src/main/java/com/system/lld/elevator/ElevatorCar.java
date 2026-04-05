@@ -66,6 +66,13 @@ public class ElevatorCar {
 
     // ------------------------------------------------------------------ //
     /**
+     * ==================================================================
+     * ======================||  SCAN Algorithm  ||======================
+     * ==================================================================
+     * The elevator should continue in its current direction until all 
+     * requests in that direction are served, then reverse and go to the 
+     * farthest request in the opposite direction. This minimizes seek time.
+     * 
      * Returns the next floor this elevator should stop at, based on
      * the SCAN algorithm:
      *  • Moving UP  → next floor in upStops that is >= currentFloor.

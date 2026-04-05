@@ -31,6 +31,10 @@ public class ElevatorSystem {
 
 	/** The dispatcher (holds the pluggable strategy). */
 	private ElevatorDispatch dispatch;
+	
+	//This is added to know that we have reached at a particular destination now we have to call arrive at method
+	//For now we are calling it manually but in new MainElevatorSimulator class we are using this
+	private  ElevatorSimulator  simulator;
 
 	// ------------------------------------------------------------------ //
 	// Constructor
@@ -52,6 +56,13 @@ public class ElevatorSystem {
 			elevators.add(new ElevatorCar(i, 0, new HashSet<>()));
 		}
 	}
+
+	public ElevatorSystem(ElevatorDispatch dispatch, List<ElevatorCar> elevators, ElevatorSimulator simulator) {
+		this.dispatch = dispatch;
+		this.elevators = elevators;
+		this.simulator = simulator;
+	}
+
 
 	// ------------------------------------------------------------------ //
 	// Public API
