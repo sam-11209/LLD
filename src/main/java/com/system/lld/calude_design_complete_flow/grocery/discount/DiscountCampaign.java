@@ -78,8 +78,8 @@ public class DiscountCampaign {
      * NOTE: input is the total price of the OrderItem (unit price × quantity),
      * not just the unit price.
      */
-    public BigDecimal calculateDiscount(OrderItem orderItem) {
-        return calculationStrategy.calculateDiscountedPrice(orderItem.calculatePrice());
+    public BigDecimal calculateDiscount(BigDecimal price) {
+        return calculationStrategy.calculateDiscountedPrice(price);
     }
 
     public String getDiscountId()   { return discountId; }

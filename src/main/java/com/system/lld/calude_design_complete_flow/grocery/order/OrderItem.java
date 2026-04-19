@@ -49,7 +49,7 @@ public class OrderItem {
      *   campaign = 10% off → calculatePriceWithDiscount() = $13.50
      */
     public BigDecimal calculatePriceWithDiscount(DiscountCampaign campaign) {
-        return campaign.calculateDiscount(this);
+        return campaign.calculateDiscount(calculatePrice());
     }
 
     public Item getItem()     { return item; }
