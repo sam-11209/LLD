@@ -128,8 +128,10 @@ public class ElevatorDispatch {
         if (chosen != null) {
             System.out.println("[ASSIGNED] Car " + chosen.getId()
                     + " → floor " + floor + " [" + dir + "]");
-            chosen.addFloorRequest(floor);
-            return true;
+			chosen.addFloorRequest(floor); // I called this method inside selectElevator method because we have multiple
+											// elevators their and if we can not add floor in one elevator we can add
+											// floor in other elevator instead of adding them in pending request
+			return true;
         }
         return false;
     }

@@ -47,10 +47,10 @@ public class ElevatorCar {
      *
      * @param floor the floor number being requested
      */
-    public void addFloorRequest(int floor) {
+    public boolean addFloorRequest(int floor) {
         if (!accessibleFloors.isEmpty() && !accessibleFloors.contains(floor)) {
             System.out.println("Car " + id + " cannot access floor " + floor);
-            return;
+            return false;
         }
 
         int current = status.getCurrentFloor();
@@ -62,6 +62,7 @@ public class ElevatorCar {
             if      (!upStops.isEmpty())   status.setCurrentDirection(Direction.UP);
             else if (!downStops.isEmpty()) status.setCurrentDirection(Direction.DOWN);
         }
+        return true;
     }
 
     // ------------------------------------------------------------------ //
