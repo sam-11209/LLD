@@ -1,6 +1,8 @@
 package com.system.lld.elevator;
+import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 import java.util.Queue;
 
 /**
@@ -32,6 +34,10 @@ public class ElevatorDispatch {
      * Retried every time an elevator becomes free (arriveAt callback).
      */
     private final Queue<FloorRequest> pendingRequests = new LinkedList<>();
+    
+    
+    // NEW: remembers the last assignment made for a given hall call
+    private Map<Integer, ElevatorCar> assignedCarByFloor = new HashMap<>();
 
     // ------------------------------------------------------------------ //
     //  Constructor
@@ -45,31 +51,36 @@ public class ElevatorDispatch {
     //  Core dispatch — with queue fallback
     // ------------------------------------------------------------------ //
 
-    /**
-     * Attempts to dispatch an elevator for (floor, dir).
-     *
-     * If the strategy cannot find a suitable car right now, the request
-     * is saved in pendingRequests and will be retried later.
-     *
-     * @param elevators all elevator cars
-     * @param floor     requested floor
-     * @param dir       requested direction
-     */
-    public void dispatchElevatorCar(List<ElevatorCar> elevators,
-                                    int floor,
-                                    Direction dir) {
+	/**
+	 * Attempts to dispatch an elevator for (floor, dir).
+	 *
+	 * If the strategy cannot find a suitable car right now, the request is saved in
+	 * pendingRequests and will be retried later.
+	 *
+	 * @param elevators all elevator cars
+	 * @param floor     requested floor
+	 * @param dir       requested direction
+	 */
+	public ElevatorCar dispatchElevatorCar(List<ElevatorCar> elevators, int floor, Direction dir) {
 
-        boolean assigned = tryAssign(elevators, floor, dir);
+		ElevatorCar elevatorCar = tryAssign(elevators, floor, dir);
 
-        if (!assigned) {
-            FloorRequest pending = new FloorRequest(floor, dir);
-            pendingRequests.add(pending);
-            System.out.println("[QUEUED]  No car available now. "
-                    + pending + " added to pending queue. "
-                    + "Queue size: " + pendingRequests.size());
-        }
-    }
+		if (elevatorCar == null) {
+			FloorRequest pending = new FloorRequest(floor, dir);
+			pendingRequests.add(pending);
+			System.out.println("[QUEUED]  No car available now. " + pending + " added to pending queue. "
+					+ "Queue size: " + pendingRequests.size());
+		}
+		assignedCarByFloor.put(floor, elevatorCar);  
+		return elevatorCar;
+	}
 
+	
+	// NEW: anyone who needs to know "which car got assigned to floor X" asks here
+	public ElevatorCar getAssignedElevator(int floor) {
+		return assignedCarByFloor.get(floor);
+	}
+	
     // ------------------------------------------------------------------ //
     //  Retry — called when any elevator finishes a stop
     // ------------------------------------------------------------------ //
@@ -99,9 +110,9 @@ public class ElevatorDispatch {
         for (int i = 0; i < size; i++) {
             FloorRequest req = pendingRequests.poll(); // remove from head
 
-            boolean assigned = tryAssign(elevators, req.getFloor(), req.getDir());
+            ElevatorCar elevatorCar = tryAssign(elevators, req.getFloor(), req.getDir());
 
-            if (!assigned) {
+            if (elevatorCar == null) {
                 // Still no car — put it back at the tail (stays pending)
                 pendingRequests.add(req);
                 System.out.println("[RETRY]   Still no car for " + req
@@ -117,23 +128,23 @@ public class ElevatorDispatch {
     /**
      * Asks the strategy to pick a car and, if found, assigns the request.
      *
-     * @return true if a car was successfully assigned, false otherwise
+     * @return ElevatorCar if a car was successfully assigned, null otherwise
      */
-    private boolean tryAssign(List<ElevatorCar> elevators,
+    private ElevatorCar tryAssign(List<ElevatorCar> elevators,
                                int floor,
                                Direction dir) {
 
-        ElevatorCar chosen = strategy.selectElevator(elevators, floor, dir);
+        ElevatorCar chosenElevatorCar = strategy.selectElevator(elevators, floor, dir);
 
-        if (chosen != null) {
-            System.out.println("[ASSIGNED] Car " + chosen.getId()
+        if (chosenElevatorCar != null) {
+            System.out.println("[ASSIGNED] Car " + chosenElevatorCar.getId()
                     + " → floor " + floor + " [" + dir + "]");
-			chosen.addFloorRequest(floor); // I called this method inside selectElevator method because we have multiple
+            chosenElevatorCar.addFloorRequest(floor); // I called this method inside selectElevator method because we have multiple
 											// elevators their and if we can not add floor in one elevator we can add
 											// floor in other elevator instead of adding them in pending request
-			return true;
+			return chosenElevatorCar;
         }
-        return false;
+        return null;
     }
 
     // ------------------------------------------------------------------ //

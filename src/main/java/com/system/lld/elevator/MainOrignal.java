@@ -27,8 +27,16 @@ public class MainOrignal {
 		HallwayButtonPanel panel7 = system.createButtonPanel(7);
 
 		panel2.pressButton(Direction.UP);
+		ElevatorCar assignedElevator2 = system.getAssignedElevator(2);
+		system.selectFloor(6, assignedElevator2);
+
 		panel7.pressButton(Direction.DOWN);
+		ElevatorCar assignedElevator7 = system.getAssignedElevator(7);
+		system.selectFloor(1, assignedElevator7);
 		system.printStatus();
+
+		System.out.println("\n--- Cabin: passenger presses floor 5 inside Car 1 ---");
+		// upStops = {5, 10}
 
 		// ✅ Fixed: pass dispatch and elevators so retryPending() can fire
 		ElevatorCar car1 = system.getElevators().get(0);

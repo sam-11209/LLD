@@ -138,4 +138,9 @@ public class ElevatorSystem {
 	public ElevatorDispatch getDispatch() {
 		return dispatch;
 	}
+
+	// NEW: anyone who needs to know "which car got assigned to floor X" asks here
+	public ElevatorCar getAssignedElevator(int floor) {
+		return dispatch.getAssignedElevator(floor);
+	}
 }

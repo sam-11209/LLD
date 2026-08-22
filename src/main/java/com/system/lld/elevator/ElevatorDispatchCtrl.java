@@ -1,5 +1,7 @@
 package com.system.lld.elevator;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * ElevatorDispatchCtrl.java
@@ -34,6 +36,7 @@ public class ElevatorDispatchCtrl implements ElevatorObserver {
 
     /** All elevator cars in the building, passed through for dispatching. */
     private final List<ElevatorCar> elevators;
+ 
 
     // ------------------------------------------------------------------ //
     //  Constructor
@@ -54,17 +57,17 @@ public class ElevatorDispatchCtrl implements ElevatorObserver {
     // ------------------------------------------------------------------ //
 
     /**
-     * Called automatically by HallwayButtonPanel whenever a button is pressed.
-     *
-     * Delegates directly to ElevatorDispatch to pick and assign a car.
-     *
-     * @param floor the floor where the button was pressed
-     * @param dir   the direction the passenger wants to go
-     */
-    @Override
-    public void update(int floor, Direction dir) {
-        System.out.println("ElevatorDispatchCtrl received event: floor="
-                + floor + ", dir=" + dir);
-        dispatch.dispatchElevatorCar(elevators, floor, dir);
-    }
+	 * Called automatically by HallwayButtonPanel whenever a button is pressed.
+	 *
+	 * Delegates directly to ElevatorDispatch to pick and assign a car.
+	 *
+	 * @param floor the floor where the button was pressed
+	 * @param dir   the direction the passenger wants to go
+	 */
+	@Override
+	public void update(int floor, Direction dir) {
+		System.out.println("ElevatorDispatchCtrl received event: floor=" + floor + ", dir=" + dir);
+		dispatch.dispatchElevatorCar(elevators, floor, dir);
+
+	}
 }
