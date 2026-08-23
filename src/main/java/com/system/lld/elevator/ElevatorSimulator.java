@@ -89,7 +89,7 @@ public class ElevatorSimulator {
 
                 // Floor is served — removes from TreeSet,
                 // updates currentFloor, triggers retryPending()
-                car.arriveAt(currentFloor, dispatch, elevators);
+                car.arriveAt(currentFloor, dispatch);
                 return currentFloor;
             }
 

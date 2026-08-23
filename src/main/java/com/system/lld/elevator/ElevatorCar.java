@@ -120,22 +120,12 @@ public class ElevatorCar {
     // ------------------------------------------------------------------ //
 
     /**
-     * V2 — arriveAt now accepts dispatch + elevators so it can
-     * trigger retryPending() after each stop.
+     * Arrive at floor and notify dispatch to retry pending requests.
      *
-     * Why trigger here?
-     *  This is the exact moment a car's load potentially decreases
-     *  (it just served a stop, may now be IDLE). Any pending request
-     *  that was blocked because all cars were busy should be retried now.
-     *
-     * @param floor     the floor just reached
-     * @param dispatch  the ElevatorDispatch holding the pending queue
-     * @param elevators all cars (needed for re-evaluation in retryPending)
+     * @param floor    the floor just reached
+     * @param dispatch the ElevatorDispatch holding the pending queue
      */
-    public void arriveAt(int floor,
-                         ElevatorDispatch dispatch,
-                         List<ElevatorCar> elevators) {
-
+    public void arriveAt(int floor, ElevatorDispatch dispatch) {
         upStops.remove(floor);
         downStops.remove(floor);
         status.setCurrentFloor(floor);
@@ -149,7 +139,21 @@ public class ElevatorCar {
         }
 
         // KEY: now that this car may be free, retry any pending requests
-        dispatch.retryPending(elevators);
+        if (dispatch != null) {
+            dispatch.retryPending();
+        }
+    }
+
+    /**
+     * Backward-compatible arriveAt method.
+     */
+    public void arriveAt(int floor,
+                         ElevatorDispatch dispatch,
+                         List<ElevatorCar> elevators) {
+        if (dispatch != null) {
+            dispatch.setElevators(elevators);
+        }
+        arriveAt(floor, dispatch);
     }
 
     // ------------------------------------------------------------------ //

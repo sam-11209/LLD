@@ -28,6 +28,7 @@ import java.util.Queue;
 public class ElevatorDispatch {
 
     private DispatchingStrategy strategy;
+    private List<ElevatorCar> elevators;
 
     /**
      * Holds requests that could not be assigned to any elevator yet.
@@ -40,16 +41,36 @@ public class ElevatorDispatch {
     private Map<Integer, ElevatorCar> assignedCarByFloor = new HashMap<>();
 
     // ------------------------------------------------------------------ //
-    //  Constructor
+    //  Constructors & Setters
     // ------------------------------------------------------------------ //
 
     public ElevatorDispatch(DispatchingStrategy strategy) {
         this.strategy = strategy;
     }
 
+    public ElevatorDispatch(DispatchingStrategy strategy, List<ElevatorCar> elevators) {
+        this.strategy = strategy;
+        this.elevators = elevators;
+    }
+
+    public void setElevators(List<ElevatorCar> elevators) {
+        this.elevators = elevators;
+    }
+
+    public List<ElevatorCar> getElevators() {
+        return elevators;
+    }
+
     // ------------------------------------------------------------------ //
     //  Core dispatch — with queue fallback
     // ------------------------------------------------------------------ //
+
+	/**
+	 * Convenience method using internal elevators list.
+	 */
+	public ElevatorCar dispatchElevatorCar(int floor, Direction dir) {
+		return dispatchElevatorCar(this.elevators, floor, dir);
+	}
 
 	/**
 	 * Attempts to dispatch an elevator for (floor, dir).
@@ -62,6 +83,9 @@ public class ElevatorDispatch {
 	 * @param dir       requested direction
 	 */
 	public ElevatorCar dispatchElevatorCar(List<ElevatorCar> elevators, int floor, Direction dir) {
+		if (elevators != null) {
+			this.elevators = elevators;
+		}
 
 		ElevatorCar elevatorCar = tryAssign(elevators, floor, dir);
 
@@ -86,6 +110,13 @@ public class ElevatorDispatch {
     // ------------------------------------------------------------------ //
 
     /**
+     * Retries pending requests using the internally registered elevators list.
+     */
+    public void retryPending() {
+        retryPending(this.elevators);
+    }
+
+    /**
      * Re-attempts every pending request in FIFO order.
      *
      * Called by ElevatorCar.arriveAt() via a callback so that as soon
@@ -99,6 +130,9 @@ public class ElevatorDispatch {
      * @param elevators all elevator cars (one of them just became free)
      */
     public void retryPending(List<ElevatorCar> elevators) {
+        if (elevators != null) {
+            this.elevators = elevators;
+        }
         if (pendingRequests.isEmpty()) return;
 
         System.out.println("[RETRY]   Attempting to assign "

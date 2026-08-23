@@ -53,7 +53,8 @@ public class Main {
         // so the queued request now gets assigned.
         System.out.println("\n--- Step 3: Car 1 arrives at floor 10 ---");
         ElevatorCar car1 = elevators.get(0);
-        car1.arriveAt(10, dispatch, elevators); // ← triggers retry internally
+        dispatch.setElevators(elevators);
+        car1.arriveAt(10, dispatch); // ← triggers retry internally
         // ↑ retryPending fires → floor 3 DOWN is now assigned to car 1
 
         System.out.println("\nPending queue size after retry: " + dispatch.pendingCount());

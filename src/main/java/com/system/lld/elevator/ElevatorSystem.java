@@ -49,18 +49,20 @@ public class ElevatorSystem {
 	 */
 	public ElevatorSystem(int numCars, DispatchingStrategy strategy) {
 		this.elevators = new ArrayList<>();
-		this.dispatch = new ElevatorDispatch(strategy);
-
 		// Create cars — all start at floor 0, no floor restriction
 		for (int i = 1; i <= numCars; i++) {
 			elevators.add(new ElevatorCar(i, 0, new HashSet<>()));
 		}
+		this.dispatch = new ElevatorDispatch(strategy, elevators);
 	}
 
 	public ElevatorSystem(ElevatorDispatch dispatch, List<ElevatorCar> elevators, ElevatorSimulator simulator) {
 		this.dispatch = dispatch;
 		this.elevators = elevators;
 		this.simulator = simulator;
+		if (this.dispatch != null) {
+			this.dispatch.setElevators(elevators);
+		}
 	}
 
 

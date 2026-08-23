@@ -43,7 +43,7 @@ public class MainOrignal {
 		System.out.println("\n--- Simulating Car 1 travel ---");
 		int next = car1.getNextStop();
 		System.out.println("Car 1 next stop: " + next);
-		car1.arriveAt(next, system.getDispatch(), system.getElevators()); // ← fixed
+		car1.arriveAt(next, system.getDispatch());
 		System.out.println("Car 1 after arrival: " + car1);
 	}
 }
