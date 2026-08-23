@@ -25,7 +25,7 @@ import java.util.Queue;
  *   - Could be swapped for a PriorityQueue if you want to retry by
  *     proximity or wait-time instead of arrival order.
  */
-public class ElevatorDispatch {
+public class ElevatorDispatch implements ElevatorObserver {
 
     private DispatchingStrategy strategy;
     private List<ElevatorCar> elevators;
@@ -64,6 +64,15 @@ public class ElevatorDispatch {
     // ------------------------------------------------------------------ //
     //  Core dispatch — with queue fallback
     // ------------------------------------------------------------------ //
+
+	/**
+	 * Observer callback invoked by HallwayButtonPanel whenever a button is pressed.
+	 */
+	@Override
+	public void update(int floor, Direction dir) {
+		System.out.println("ElevatorDispatch received observer event: floor=" + floor + ", dir=" + dir);
+		dispatchElevatorCar(floor, dir);
+	}
 
 	/**
 	 * Convenience method using internal elevators list.

@@ -113,8 +113,7 @@ public class ElevatorSystem {
 	 */
 	public HallwayButtonPanel createButtonPanel(int floor) {
 		HallwayButtonPanel panel = new HallwayButtonPanel(floor);
-		ElevatorDispatchCtrl ctrl = new ElevatorDispatchCtrl(dispatch, elevators);
-		panel.addObserver(ctrl);
+		panel.addObserver(dispatch);
 		return panel;
 	}
 
