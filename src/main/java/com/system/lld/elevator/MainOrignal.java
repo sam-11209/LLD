@@ -45,5 +45,15 @@ public class MainOrignal {
 		System.out.println("Car 1 next stop: " + next);
 		car1.arriveAt(next, system.getDispatch());
 		System.out.println("Car 1 after arrival: " + car1);
+
+		System.out.println("\n=== Factory Pattern demo ===");
+		// Factory creating standard elevator car
+		ElevatorCar standardCar = ElevatorFactory.createElevator(3);
+		System.out.println("Factory created standard car: " + standardCar);
+
+		// Factory creating specialized express elevator car with restricted stops
+		java.util.Set<Integer> expressFloors = java.util.Set.of(0, 10, 20);
+		ElevatorCar expressCar = ElevatorFactory.createElevator(ElevatorType.EXPRESS, 4, 0, expressFloors);
+		System.out.println("Factory created express car: " + expressCar);
 	}
 }

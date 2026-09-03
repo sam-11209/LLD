@@ -48,10 +48,14 @@ public class ElevatorSystem {
 	 * @param strategy the algorithm to use for car selection
 	 */
 	public ElevatorSystem(int numCars, DispatchingStrategy strategy) {
+		this(numCars, strategy, new ElevatorFactory());
+	}
+
+	public ElevatorSystem(int numCars, DispatchingStrategy strategy, ElevatorFactory factory) {
 		this.elevators = new ArrayList<>();
-		// Create cars — all start at floor 0, no floor restriction
+		// Create cars via Factory Pattern
 		for (int i = 1; i <= numCars; i++) {
-			elevators.add(new ElevatorCar(i, 0, new HashSet<>()));
+			elevators.add(factory != null ? factory.create(i) : ElevatorFactory.createElevator(i));
 		}
 		this.dispatch = new ElevatorDispatch(strategy, elevators);
 	}
