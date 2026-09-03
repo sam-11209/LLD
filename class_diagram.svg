@@ -1,0 +1,361 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="100%" height="100%" style="background-color: #0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .title-text { font-size: 26px; font-weight: 700; fill: #f8fafc; letter-spacing: 0.5px; }
+      .subtitle-text { font-size: 14px; fill: #94a3b8; }
+      .pkg-header { font-size: 13px; font-weight: 600; fill: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
+      .class-box { fill: #1e293b; stroke: #334155; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .interface-box { fill: #1e293b; stroke: #0284c7; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .state-box { fill: #1e293b; stroke: #8b5cf6; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .facade-box { fill: #1e293b; stroke: #10b981; stroke-width: 2; rx: 8; filter: drop-shadow(0 6px 10px rgba(16,185,129,0.2)); }
+      .class-title { font-size: 14px; font-weight: 700; fill: #f1f5f9; }
+      .class-stereotype { font-size: 11px; font-style: italic; fill: #38bdf8; }
+      .state-stereotype { font-size: 11px; font-style: italic; fill: #c084fc; }
+      .facade-stereotype { font-size: 11px; font-style: italic; fill: #34d399; }
+      .section-divider { stroke: #334155; stroke-width: 1; }
+      .field-text { font-size: 11px; fill: #cbd5e1; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+      .method-text { font-size: 11px; fill: #93c5fd; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+      .thread-safety-badge { font-size: 10px; font-weight: 600; fill: #fbbf24; }
+      .rel-line { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .rel-line-dashed { stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .rel-text { font-size: 11px; fill: #94a3b8; font-weight: 500; }
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="inheritance" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <polygon points="0 0, 11 6, 0 12" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+    </marker>
+    <marker id="realization" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <polygon points="0 0, 11 6, 0 12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="10" markerHeight="10" orient="auto">
+      <polygon points="0 8, 8 3, 16 8, 8 13" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Banner & Titles -->
+  <g transform="translate(60, 45)">
+    <text class="title-text" x="0" y="0">ATM System — Complete Low-Level Design (LLD)</text>
+    <text class="subtitle-text" x="0" y="24">UML Architecture: State Pattern, Facade Pattern, Strategy Abstraction &amp; Fine-Grained Thread Safety</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1: Hardware Interfaces (Top Left) & Account / Transaction (Top Right) -->
+  <!-- ========================================================================= -->
+
+  <!-- HARDWARE SUBSYSTEM -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="360" height="280" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="16" y="24">Package atm.hardware</text>
+
+    <!-- CardProcessor -->
+    <g transform="translate(16, 38)">
+      <rect class="interface-box" width="328" height="68"/>
+      <text class="class-stereotype" x="164" y="16" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="164" y="32" text-anchor="middle">CardProcessor</text>
+      <line class="section-divider" x1="0" y1="38" x2="328" y2="38"/>
+      <text class="method-text" x="10" y="52">+ insertCard(cardNumber: String): void</text>
+      <text class="method-text" x="10" y="64">+ getCardNumber(): String | ejectCard() | retainCard()</text>
+    </g>
+
+    <!-- CashDispenser & DepositBox -->
+    <g transform="translate(16, 116)">
+      <rect class="interface-box" width="158" height="74"/>
+      <text class="class-stereotype" x="79" y="16" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="79" y="32" text-anchor="middle">CashDispenser</text>
+      <line class="section-divider" x1="0" y1="38" x2="158" y2="38"/>
+      <text class="method-text" x="8" y="56">+ dispenseCash(</text>
+      <text class="method-text" x="20" y="68">amount: BigDecimal)</text>
+    </g>
+
+    <g transform="translate(186, 116)">
+      <rect class="interface-box" width="158" height="74"/>
+      <text class="class-stereotype" x="79" y="16" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="79" y="32" text-anchor="middle">DepositBox</text>
+      <line class="section-divider" x1="0" y1="38" x2="158" y2="38"/>
+      <text class="method-text" x="8" y="56">+ collectDeposit(</text>
+      <text class="method-text" x="20" y="68">amount: BigDecimal)</text>
+    </g>
+
+    <!-- Keypad & Display -->
+    <g transform="translate(16, 200)">
+      <rect class="interface-box" width="158" height="66"/>
+      <text class="class-stereotype" x="79" y="16" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="79" y="32" text-anchor="middle">Keypad</text>
+      <line class="section-divider" x1="0" y1="38" x2="158" y2="38"/>
+      <text class="method-text" x="8" y="54">+ getInput(): String</text>
+    </g>
+
+    <g transform="translate(186, 200)">
+      <rect class="interface-box" width="158" height="66"/>
+      <text class="class-stereotype" x="79" y="16" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="79" y="32" text-anchor="middle">Display</text>
+      <line class="section-divider" x1="0" y1="38" x2="158" y2="38"/>
+      <text class="method-text" x="8" y="54">+ showMessage(msg)</text>
+    </g>
+  </g>
+
+  <!-- ATMMachine (FACADE & CONTEXT) -->
+  <g transform="translate(470, 100)">
+    <rect class="facade-box" width="380" height="280"/>
+    <text class="facade-stereotype" x="190" y="20" text-anchor="middle">&lt;&lt;Facade / Context&gt;&gt;</text>
+    <text class="class-title" x="190" y="38" text-anchor="middle">ATMMachine</text>
+    <line class="section-divider" x1="0" y1="46" x2="380" y2="46"/>
+    
+    <text class="field-text" x="14" y="62">- state: ATMState  <tspan fill="#6ee7b7">(single-session state)</tspan></text>
+    <text class="field-text" x="14" y="78">- bank: BankInterface</text>
+    <text class="field-text" x="14" y="94">- cardProcessor: CardProcessor</text>
+    <text class="field-text" x="14" y="110">- cashDispenser: CashDispenser</text>
+    <text class="field-text" x="14" y="126">- depositBox: DepositBox</text>
+    <text class="field-text" x="14" y="142">- display: Display</text>
+    
+    <line class="section-divider" x1="0" y1="152" x2="380" y2="152"/>
+    <text class="method-text" x="14" y="170">+ insertCard(cardNumber: String): void</text>
+    <text class="method-text" x="14" y="186">+ enterPin(pin: String): void</text>
+    <text class="method-text" x="14" y="202">+ withdrawRequest(): void</text>
+    <text class="method-text" x="14" y="218">+ depositRequest(): void</text>
+    <text class="method-text" x="14" y="234">+ enterAmount(amount: BigDecimal): void</text>
+    <text class="method-text" x="14" y="250">+ collectDeposit(amount: BigDecimal): void</text>
+    <text class="method-text" x="14" y="266">+ transitionToState(nextState: ATMState): void</text>
+  </g>
+
+  <!-- BANK & ACCOUNT SUBSYSTEM (Right) -->
+  <g transform="translate(900, 100)">
+    <rect x="0" y="0" width="640" height="420" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="20" y="24">Packages atm.bank &amp; atm.account</text>
+
+    <!-- BankInterface -->
+    <g transform="translate(20, 40)">
+      <rect class="interface-box" width="280" height="150"/>
+      <text class="class-stereotype" x="140" y="18" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="140" y="34" text-anchor="middle">BankInterface</text>
+      <line class="section-divider" x1="0" y1="42" x2="280" y2="42"/>
+      <text class="method-text" x="10" y="60">+ addAccount(accNo, type, card, pin): void</text>
+      <text class="method-text" x="10" y="78">+ validateCard(cardNumber: String): boolean</text>
+      <text class="method-text" x="10" y="96">+ checkPin(card, pin): boolean</text>
+      <text class="method-text" x="10" y="114">+ getAccountByCard(cardNumber): Account</text>
+      <text class="method-text" x="10" y="132">+ withdrawFunds(acc: Account, amt): boolean</text>
+    </g>
+
+    <!-- Account -->
+    <g transform="translate(330, 40)">
+      <rect class="class-box" width="290" height="230"/>
+      <text class="class-title" x="145" y="24" text-anchor="middle">Account</text>
+      <text class="thread-safety-badge" x="145" y="38" text-anchor="middle">[Thread-Safe: ReentrantLock]</text>
+      <line class="section-divider" x1="0" y1="46" x2="290" y2="46"/>
+      <text class="field-text" x="10" y="64">- accountNumber: String [final]</text>
+      <text class="field-text" x="10" y="80">- cardNumber: String [final]</text>
+      <text class="field-text" x="10" y="96">- cardPinHash: byte[] [final SHA-256]</text>
+      <text class="field-text" x="10" y="112">- accountType: AccountType [final]</text>
+      <text class="field-text" x="10" y="128">- balance: BigDecimal [mutable]</text>
+      <text class="field-text" x="10" y="144">- lock: ReentrantLock [fair]</text>
+      <line class="section-divider" x1="0" y1="152" x2="290" y2="152"/>
+      <text class="method-text" x="10" y="170">+ validatePin(pin: String): boolean</text>
+      <text class="method-text" x="10" y="188">+ updateBalanceWithTransaction(chg): void</text>
+      <text class="method-text" x="10" y="206">+ getLock(): ReentrantLock</text>
+      <text class="method-text" x="10" y="222">+ getBalance(): BigDecimal</text>
+    </g>
+
+    <!-- Bank Implementation -->
+    <g transform="translate(20, 220)">
+      <rect class="class-box" width="280" height="180"/>
+      <text class="class-title" x="140" y="22" text-anchor="middle">Bank</text>
+      <text class="thread-safety-badge" x="140" y="36" text-anchor="middle">[ConcurrentHashMap + Account Lock]</text>
+      <line class="section-divider" x1="0" y1="44" x2="280" y2="44"/>
+      <text class="field-text" x="10" y="62">- accounts: ConcurrentHashMap</text>
+      <text class="field-text" x="10" y="78">- accountByCard: ConcurrentHashMap</text>
+      <line class="section-divider" x1="0" y1="88" x2="280" y2="88"/>
+      <text class="method-text" x="10" y="106">+ validateCard(cardNumber): boolean</text>
+      <text class="method-text" x="10" y="124">+ checkPin(card, pin): boolean</text>
+      <text class="method-text" x="10" y="142">+ withdrawFunds(Account, amt): boolean</text>
+      <text class="field-text" x="20" y="158" fill="#fbbf24">↳ Atomically locks account.getLock()</text>
+      <text class="field-text" x="20" y="172" fill="#fbbf24">   for check-then-act balance debit</text>
+    </g>
+
+    <!-- AccountType Enum -->
+    <g transform="translate(330, 290)">
+      <rect class="class-box" width="130" height="90" stroke="#f59e0b"/>
+      <text class="class-stereotype" x="65" y="18" text-anchor="middle">&lt;&lt;enum&gt;&gt;</text>
+      <text class="class-title" x="65" y="34" text-anchor="middle">AccountType</text>
+      <line class="section-divider" x1="0" y1="42" x2="130" y2="42"/>
+      <text class="field-text" x="14" y="60">+ CHECKING</text>
+      <text class="field-text" x="14" y="78">+ SAVINGS</text>
+    </g>
+
+    <!-- TransactionType Enum -->
+    <g transform="translate(480, 290)">
+      <rect class="class-box" width="140" height="90" stroke="#f59e0b"/>
+      <text class="class-stereotype" x="70" y="18" text-anchor="middle">&lt;&lt;enum&gt;&gt;</text>
+      <text class="class-title" x="70" y="34" text-anchor="middle">TransactionType</text>
+      <line class="section-divider" x1="0" y1="42" x2="140" y2="42"/>
+      <text class="field-text" x="14" y="60">+ WITHDRAW</text>
+      <text class="field-text" x="14" y="78">+ DEPOSIT</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2: TRANSACTION STRATEGY (Left) & STATE PATTERN HIERARCHY (Bottom)    -->
+  <!-- ========================================================================= -->
+
+  <!-- TRANSACTION SUBSYSTEM (Polymorphic Strategy) -->
+  <g transform="translate(60, 420)">
+    <rect x="0" y="0" width="480" height="260" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="20" y="24">Package atm.transaction (Strategy Pattern)</text>
+
+    <!-- Transaction Interface -->
+    <g transform="translate(140, 40)">
+      <rect class="interface-box" width="200" height="80"/>
+      <text class="class-stereotype" x="100" y="18" text-anchor="middle">&lt;&lt;interface&gt;&gt;</text>
+      <text class="class-title" x="100" y="34" text-anchor="middle">Transaction</text>
+      <line class="section-divider" x1="0" y1="42" x2="200" y2="42"/>
+      <text class="method-text" x="10" y="58">+ getType(): TransactionType</text>
+      <text class="method-text" x="10" y="72">+ validateTransaction(): boolean</text>
+      <text class="method-text" x="10" y="86">+ executeTransaction(): void</text>
+    </g>
+
+    <!-- WithdrawTransaction -->
+    <g transform="translate(20, 150)">
+      <rect class="class-box" width="210" height="96"/>
+      <text class="class-title" x="105" y="20" text-anchor="middle">WithdrawTransaction</text>
+      <line class="section-divider" x1="0" y1="28" x2="210" y2="28"/>
+      <text class="field-text" x="8" y="44">- account: Account | amt: BigDecimal</text>
+      <line class="section-divider" x1="0" y1="52" x2="210" y2="52"/>
+      <text class="method-text" x="8" y="68">+ validateTransaction(): boolean</text>
+      <text class="method-text" x="8" y="84">+ executeTransaction(): void</text>
+    </g>
+
+    <!-- DepositTransaction -->
+    <g transform="translate(250, 150)">
+      <rect class="class-box" width="210" height="96"/>
+      <text class="class-title" x="105" y="20" text-anchor="middle">DepositTransaction</text>
+      <line class="section-divider" x1="0" y1="28" x2="210" y2="28"/>
+      <text class="field-text" x="8" y="44">- account: Account | amt: BigDecimal</text>
+      <line class="section-divider" x1="0" y1="52" x2="210" y2="52"/>
+      <text class="method-text" x="8" y="68">+ validateTransaction(): true</text>
+      <text class="method-text" x="8" y="84">+ executeTransaction(): void</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 3: STATE PATTERN HIERARCHY                                            -->
+  <!-- ========================================================================= -->
+  <g transform="translate(60, 720)">
+    <rect x="0" y="0" width="1480" height="440" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="24" y="28">Package atm.state (State Pattern)</text>
+
+    <!-- Base Abstract ATMState -->
+    <g transform="translate(540, 45)">
+      <rect class="state-box" width="400" height="150"/>
+      <text class="state-stereotype" x="200" y="18" text-anchor="middle">&lt;&lt;abstract base&gt;&gt;</text>
+      <text class="class-title" x="200" y="36" text-anchor="middle">ATMState</text>
+      <line class="section-divider" x1="0" y1="44" x2="400" y2="44"/>
+      <text class="method-text" x="14" y="62">+ processCardInsertion(atm, card): void [default: invalid]</text>
+      <text class="method-text" x="14" y="78">+ processPinEntry(atm, pin): void [default: invalid]</text>
+      <text class="method-text" x="14" y="94">+ processWithdrawalRequest(atm): void [default: invalid]</text>
+      <text class="method-text" x="14" y="110">+ processDepositRequest(atm): void [default: invalid]</text>
+      <text class="method-text" x="14" y="126">+ processAmountEntry(atm, amt): void [default: invalid]</text>
+      <text class="method-text" x="14" y="142">+ processCardEjection(atm): void [default: invalid]</text>
+    </g>
+
+    <!-- State 1: IdleState -->
+    <g transform="translate(30, 240)">
+      <rect class="state-box" width="260" height="160"/>
+      <text class="class-title" x="130" y="24" text-anchor="middle">IdleState</text>
+      <line class="section-divider" x1="0" y1="34" x2="260" y2="34"/>
+      <text class="field-text" x="10" y="52">Awaiting card insertion</text>
+      <line class="section-divider" x1="0" y1="62" x2="260" y2="62"/>
+      <text class="method-text" x="10" y="80">+ processCardInsertion(atm, card)</text>
+      <text class="field-text" x="16" y="98" fill="#a7f3d0">↳ Valid: -&gt; PinEntryState</text>
+      <text class="field-text" x="16" y="116" fill="#fca5a5">↳ Invalid: stays IdleState</text>
+    </g>
+
+    <!-- State 2: PinEntryState -->
+    <g transform="translate(320, 240)">
+      <rect class="state-box" width="260" height="160"/>
+      <text class="class-title" x="130" y="24" text-anchor="middle">PinEntryState</text>
+      <line class="section-divider" x1="0" y1="34" x2="260" y2="34"/>
+      <text class="field-text" x="10" y="50">- failedAttempts: int = 0</text>
+      <text class="field-text" x="10" y="66">- MAX_ATTEMPTS: int = 3</text>
+      <line class="section-divider" x1="0" y1="74" x2="260" y2="74"/>
+      <text class="method-text" x="10" y="92">+ processPinEntry(atm, pin)</text>
+      <text class="field-text" x="16" y="110" fill="#a7f3d0">↳ Correct: -&gt; TransactionSelection</text>
+      <text class="field-text" x="16" y="128" fill="#fca5a5">↳ 3rd Failure: retains card -&gt; Idle</text>
+      <text class="method-text" x="10" y="146">+ processCardEjection(atm)</text>
+    </g>
+
+    <!-- State 3: TransactionSelectionState -->
+    <g transform="translate(610, 240)">
+      <rect class="state-box" width="270" height="160"/>
+      <text class="class-title" x="135" y="24" text-anchor="middle">TransactionSelectionState</text>
+      <line class="section-divider" x1="0" y1="34" x2="270" y2="34"/>
+      <text class="field-text" x="10" y="52">Choose operation or exit</text>
+      <line class="section-divider" x1="0" y1="62" x2="270" y2="62"/>
+      <text class="method-text" x="10" y="82">+ processWithdrawalRequest(atm)</text>
+      <text class="field-text" x="16" y="98" fill="#a7f3d0">↳ -&gt; WithdrawAmountEntryState</text>
+      <text class="method-text" x="10" y="116">+ processDepositRequest(atm)</text>
+      <text class="field-text" x="16" y="132" fill="#a7f3d0">↳ -&gt; DepositCollectionState</text>
+      <text class="method-text" x="10" y="150">+ processCardEjection(atm) -&gt; Idle</text>
+    </g>
+
+    <!-- State 4: WithdrawAmountEntryState -->
+    <g transform="translate(910, 240)">
+      <rect class="state-box" width="260" height="160"/>
+      <text class="class-title" x="130" y="24" text-anchor="middle">WithdrawAmountEntryState</text>
+      <line class="section-divider" x1="0" y1="34" x2="260" y2="34"/>
+      <text class="field-text" x="10" y="52">Validate funds &amp; dispense</text>
+      <line class="section-divider" x1="0" y1="62" x2="260" y2="62"/>
+      <text class="method-text" x="10" y="80">+ processAmountEntry(atm, amt)</text>
+      <text class="field-text" x="16" y="98" fill="#a7f3d0">↳ Success: dispense cash -&gt; Select</text>
+      <text class="field-text" x="16" y="116" fill="#fca5a5">↳ Insufficient: notify -&gt; Select</text>
+      <text class="method-text" x="10" y="140">+ processCardEjection(atm) -&gt; Idle</text>
+    </g>
+
+    <!-- State 5: DepositCollectionState -->
+    <g transform="translate(1200, 240)">
+      <rect class="state-box" width="250" height="160"/>
+      <text class="class-title" x="125" y="24" text-anchor="middle">DepositCollectionState</text>
+      <line class="section-divider" x1="0" y1="34" x2="250" y2="34"/>
+      <text class="field-text" x="10" y="52">Collect cash &amp; credit balance</text>
+      <line class="section-divider" x1="0" y1="62" x2="250" y2="62"/>
+      <text class="method-text" x="10" y="80">+ processDepositCollection(amt)</text>
+      <text class="field-text" x="16" y="98" fill="#a7f3d0">↳ Executes DepositTransaction</text>
+      <text class="field-text" x="16" y="116" fill="#a7f3d0">↳ Updates balance -&gt; Select</text>
+      <text class="method-text" x="10" y="140">+ processCardEjection(atm) -&gt; Idle</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTORS & ANNOTATIONS                                     -->
+  <!-- ========================================================================= -->
+
+  <!-- Bank realization: Bank - - -|> BankInterface -->
+  <path class="rel-line-dashed" marker-end="url(#realization)" d="M 1060 320 L 1060 250"/>
+
+  <!-- Bank aggregation: Bank ◇-> Account -->
+  <path class="rel-line" marker-start="url(#diamond)" d="M 1200 300 L 1230 300 L 1230 270"/>
+
+  <!-- ATMMachine uses BankInterface -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 850 170 L 920 170"/>
+  <text class="rel-text" x="860" y="162">uses</text>
+
+  <!-- ATMMachine uses Hardware -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 470 230 L 420 230"/>
+  <text class="rel-text" x="428" y="222">controls</text>
+
+  <!-- ATMMachine has-a ATMState -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 660 380 L 660 765"/>
+  <text class="rel-text" x="668" y="560">maintains current state</text>
+
+  <!-- Concrete States inherit ATMState -->
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 160 960 L 160 880 L 740 880 L 740 915"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 450 960 L 450 880 L 740 880"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 740 960 L 740 880"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 1040 960 L 1040 880 L 740 880"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 1320 960 L 1320 880 L 740 880"/>
+
+  <!-- Concrete Transactions realize Transaction -->
+  <path class="rel-line-dashed" marker-end="url(#realization)" d="M 185 570 L 185 545 L 300 545 L 300 500"/>
+  <path class="rel-line-dashed" marker-end="url(#realization)" d="M 415 570 L 415 545 L 300 545"/>
+</svg>
