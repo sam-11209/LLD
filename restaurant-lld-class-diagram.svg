@@ -1,0 +1,609 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2200 1600" width="2200" height="1600">
+<defs>
+        <style>
+            @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&amp;family=Inter:wght@400;600;700;800&amp;display=swap');
+            text { font-family: 'Inter', -apple-system, sans-serif; }
+            .code-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; }
+            .title-text { font-family: 'Inter', sans-serif; font-weight: 800; }
+            .shadow { filter: drop-shadow(0px 8px 24px rgba(0, 0, 0, 0.45)); }
+        </style>
+        
+        <!-- Markers -->
+        <!-- Association Arrow -->
+        <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#94a3b8" />
+        </marker>
+        <marker id="arrow-indigo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#818cf8" />
+        </marker>
+        <marker id="arrow-amber" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#fbbf24" />
+        </marker>
+        <marker id="arrow-sky" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#38bdf8" />
+        </marker>
+        <marker id="arrow-pink" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#f472b6" />
+        </marker>
+        <marker id="arrow-emerald" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M 0 1 L 10 5 L 0 9 z" fill="#34d399" />
+        </marker>
+
+        <!-- Realization Hollow Triangle -->
+        <marker id="realization" viewBox="0 0 14 14" refX="13" refY="7" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
+            <polygon points="1,1 13,7 1,13" fill="#0f172a" stroke="#ec4899" stroke-width="1.8" />
+        </marker>
+
+        <!-- Composition Diamond (filled) -->
+        <marker id="diamond-filled" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+            <polygon points="0,8 8,2 16,8 8,14" fill="#94a3b8" />
+        </marker>
+        <marker id="diamond-emerald" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+            <polygon points="0,8 8,2 16,8 8,14" fill="#10b981" />
+        </marker>
+        <marker id="diamond-sky" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+            <polygon points="0,8 8,2 16,8 8,14" fill="#0ea5e9" />
+        </marker>
+        <marker id="diamond-amber" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+            <polygon points="0,8 8,2 16,8 8,14" fill="#f59e0b" />
+        </marker>
+        <marker id="diamond-pink" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
+            <polygon points="0,8 8,2 16,8 8,14" fill="#ec4899" />
+        </marker>
+
+        <!-- Grid Pattern -->
+        <pattern id="grid" width="30" height="30" patternUnits="userSpaceOnUse">
+            <circle cx="15" cy="15" r="1" fill="#334155" opacity="0.35" />
+        </pattern>
+        
+        <!-- Linear Gradients for Class Headers -->
+        <linearGradient id="grad-indigo" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#4f46e5" />
+            <stop offset="100%" stop-color="#6366f1" />
+        </linearGradient>
+        <linearGradient id="grad-emerald" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#059669" />
+            <stop offset="100%" stop-color="#10b981" />
+        </linearGradient>
+        <linearGradient id="grad-sky" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#0284c7" />
+            <stop offset="100%" stop-color="#0ea5e9" />
+        </linearGradient>
+        <linearGradient id="grad-amber" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#d97706" />
+            <stop offset="100%" stop-color="#f59e0b" />
+        </linearGradient>
+        <linearGradient id="grad-pink" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#db2777" />
+            <stop offset="100%" stop-color="#ec4899" />
+        </linearGradient>
+        <linearGradient id="grad-purple" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0%" stop-color="#7c3aed" />
+            <stop offset="100%" stop-color="#8b5cf6" />
+        </linearGradient>
+    </defs>
+<rect width="2200" height="1600" fill="#0b0f19" />
+<rect width="2200" height="1600" fill="url(#grid)" />
+<g transform="translate(60, 40)">
+        <rect x="0" y="0" width="2080" height="90" rx="14" fill="#111827" stroke="#1e293b" stroke-width="1.5" class="shadow" />
+        <rect x="0" y="0" width="8" height="90" rx="4" fill="#6366f1" />
+        <text x="30" y="42" font-size="24" font-weight="800" fill="#f8fafc">RESTAURANT MANAGEMENT SYSTEM — LOW LEVEL DESIGN (CLASS DIAGRAM)</text>
+        <text x="30" y="68" font-size="13" font-weight="500" fill="#94a3b8">Complete Object-Oriented Architecture with Design Patterns (Facade &amp; Command) and Concurrency Blueprint</text>
+        
+        <!-- Legend Badges -->
+        <g transform="translate(1420, 24)">
+            <rect x="0" y="0" width="105" height="42" rx="8" fill="#1e1b4b" stroke="#4338ca" />
+            <text x="52" y="26" font-size="11" font-weight="700" fill="#c7d2fe" text-anchor="middle">FACADE PATTERN</text>
+        </g>
+        <g transform="translate(1535, 24)">
+            <rect x="0" y="0" width="120" height="42" rx="8" fill="#831843" stroke="#be185d" />
+            <text x="60" y="26" font-size="11" font-weight="700" fill="#fbcfe8" text-anchor="middle">COMMAND PATTERN</text>
+        </g>
+        <g transform="translate(1665, 24)">
+            <rect x="0" y="0" width="145" height="42" rx="8" fill="#064e3b" stroke="#047857" />
+            <text x="72" y="26" font-size="11" font-weight="700" fill="#a7f3d0" text-anchor="middle">THREAD SAFE / ATOMIC</text>
+        </g>
+        <g transform="translate(1820, 24)">
+            <rect x="0" y="0" width="120" height="42" rx="8" fill="#1e293b" stroke="#475569" />
+            <text x="60" y="26" font-size="11" font-weight="700" fill="#cbd5e1" text-anchor="middle">JAVA 25 / IN-MEMORY</text>
+        </g>
+    </g>
+<g transform="translate(830, 160)" class="shadow">
+<rect x="0" y="0" width="540" height="330" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 530 0 Q 540 0 540 10 L 540 48 L 0 48 Z" fill="url(#grad-indigo)" />
+<text x="270.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;facade&gt;&gt;</text>
+<text x="270.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Restaurant</text>
+<g transform="translate(430, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">STATELESS FACADE</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> name: String</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> menu: Menu</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> layout: Layout</text>
+<text x="14" y="120" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="120" class="code-text" fill="#cbd5e1"> reservationManager: ReservationManager</text>
+<text x="14" y="138" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="138" class="code-text" fill="#cbd5e1"> orderManager: OrderManager</text>
+<line x1="0" y1="160" x2="540" y2="160" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> Restaurant(name: String, menu: Menu, layout: Layout)</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> findAvailableTimeSlots(start: LocalDateTime, end: LocalDateTime, size: int): LocalDateTime[]</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> createScheduledReservation(partyName: String, size: int, time: LocalDateTime): Reservation</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> createWalkInReservation(partyName: String, size: int): Reservation</text>
+<text x="14" y="248" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="248" class="code-text" fill="#e2e8f0"> removeReservation(partyName: String, size: int, time: LocalDateTime): void</text>
+<text x="14" y="266" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="266" class="code-text" fill="#e2e8f0"> orderItem(table: Table, item: MenuItem): void</text>
+<text x="14" y="284" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="284" class="code-text" fill="#e2e8f0"> cancelItem(table: Table, item: MenuItem): void</text>
+<text x="14" y="302" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="302" class="code-text" fill="#e2e8f0"> deliverItem(table: Table, item: MenuItem): void</text>
+<text x="14" y="320" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="320" class="code-text" fill="#e2e8f0"> calculateTableBill(table: Table): BigDecimal</text>
+<text x="14" y="338" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="338" class="code-text" fill="#e2e8f0"> getName(): String</text>
+<text x="14" y="356" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="356" class="code-text" fill="#e2e8f0"> getMenu(): Menu | getLayout(): Layout | getReservationManager(): ReservationManager</text>
+</g>
+<g transform="translate(60, 280)" class="shadow">
+<rect x="0" y="0" width="330" height="190" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 320 0 Q 330 0 330 10 L 330 48 L 0 48 Z" fill="url(#grad-emerald)" />
+<text x="165.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;registry&gt;&gt;</text>
+<text x="165.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Menu</text>
+<g transform="translate(220, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">ConcurrentHashMap</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> menuItems: ConcurrentMap&lt;String, MenuItem&gt;</text>
+<line x1="0" y1="88" x2="330" y2="88" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="104" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="104" class="code-text" fill="#e2e8f0"> addItem(item: MenuItem): void</text>
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> getItem(name: String): MenuItem</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> getMenuItems(): Map&lt;String, MenuItem&gt;</text>
+</g>
+<g transform="translate(60, 550)" class="shadow">
+<rect x="0" y="0" width="330" height="210" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 320 0 Q 330 0 330 10 L 330 48 L 0 48 Z" fill="url(#grad-emerald)" />
+<text x="165.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;immutable entity&gt;&gt;</text>
+<text x="165.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">MenuItem</text>
+<g transform="translate(220, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Thread-Safe</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> name: String</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> description: String</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> price: BigDecimal</text>
+<text x="14" y="120" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="120" class="code-text" fill="#cbd5e1"> category: Category</text>
+<line x1="0" y1="142" x2="330" y2="142" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> MenuItem(name: String, desc: String, price: BigDecimal, cat: Category)</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> getName(): String</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> getDescription(): String</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> getPrice(): BigDecimal</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> getCategory(): Category</text>
+<text x="14" y="248" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="248" class="code-text" fill="#e2e8f0"> equals(o: Object): boolean | hashCode(): int</text>
+</g>
+<g transform="translate(60, 830)" class="shadow">
+<rect x="0" y="0" width="330" height="150" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 320 0 Q 330 0 330 10 L 330 48 L 0 48 Z" fill="url(#grad-emerald)" />
+<text x="165.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="165.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Category</text>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> MAIN</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> APPETIZER</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> DESSERT</text>
+<line x1="0" y1="124" x2="330" y2="124" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> values(): Category[]</text>
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> valueOf(name: String): Category</text>
+</g>
+<g transform="translate(450, 550)" class="shadow">
+<rect x="0" y="0" width="440" height="250" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 430 0 Q 440 0 440 10 L 440 48 L 0 48 Z" fill="url(#grad-amber)" />
+<text x="220.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;domain manager&gt;&gt;</text>
+<text x="220.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">ReservationManager</text>
+<g transform="translate(330, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Atomic Set &amp; Retry</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> layout: Layout</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> reservations: Set&lt;Reservation&gt;</text>
+<line x1="0" y1="106" x2="440" y2="106" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> ReservationManager(layout: Layout)</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> findAvailableTimeSlots(start: LocalDateTime, end: LocalDateTime, size: int): LocalDateTime[]</text>
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> createReservation(name: String, size: int, time: LocalDateTime): Reservation</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> removeReservation(name: String, size: int, time: LocalDateTime): boolean</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> getReservationByPartyName(partyName: String): Reservation</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> getReservations(): Set&lt;Reservation&gt;</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> getLayout(): Layout</text>
+</g>
+<g transform="translate(450, 870)" class="shadow">
+<rect x="0" y="0" width="440" height="210" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 430 0 Q 440 0 440 10 L 440 48 L 0 48 Z" fill="url(#grad-amber)" />
+<text x="220.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;immutable record&gt;&gt;</text>
+<text x="220.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Reservation</text>
+<g transform="translate(330, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Thread-Safe</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> partyName: String</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> partySize: int</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> time: LocalDateTime</text>
+<text x="14" y="120" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="120" class="code-text" fill="#cbd5e1"> assignedTable: Table</text>
+<line x1="0" y1="142" x2="440" y2="142" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> Reservation(name: String, size: int, time: LocalDateTime, table: Table)</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> getPartyName(): String</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> getPartySize(): int</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> getTime(): LocalDateTime</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> getAssignedTable(): Table</text>
+<text x="14" y="248" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="248" class="code-text" fill="#e2e8f0"> equals(o: Object): boolean | hashCode(): int</text>
+</g>
+<g transform="translate(950, 550)" class="shadow">
+<rect x="0" y="0" width="440" height="230" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 430 0 Q 440 0 440 10 L 440 48 L 0 48 Z" fill="url(#grad-sky)" />
+<text x="220.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;domain manager&gt;&gt;</text>
+<text x="220.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Layout</text>
+<g transform="translate(330, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Safe Publication</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> tablesById: Map&lt;Integer, Table&gt;</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> tablesByCapacity: SortedMap&lt;Integer, Set&lt;Table&gt;&gt;</text>
+<line x1="0" y1="106" x2="440" y2="106" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> Layout(tableCapacities: List&lt;Integer&gt;)</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> Layout(tables: Collection&lt;Table&gt;)</text>
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> findAvailableTable(partySize: int, time: LocalDateTime): Table</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> findCandidateTables(partySize: int, time: LocalDateTime): List&lt;Table&gt;</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> getTableById(tableId: int): Table</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> getTablesById(): Map&lt;Integer, Table&gt;</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> getTablesByCapacity(): SortedMap&lt;Integer, Set&lt;Table&gt;&gt;</text>
+</g>
+<g transform="translate(950, 850)" class="shadow">
+<rect x="0" y="0" width="440" height="330" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 430 0 Q 440 0 440 10 L 440 48 L 0 48 Z" fill="url(#grad-sky)" />
+<text x="220.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;aggregate root&gt;&gt;</text>
+<text x="220.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Table</text>
+<g transform="translate(330, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">putIfAbsent &amp; compute</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> tableId: int</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> capacity: int</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> reservations: ConcurrentMap&lt;LocalDateTime, Reservation&gt;</text>
+<text x="14" y="120" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="120" class="code-text" fill="#cbd5e1"> orderedItems: ConcurrentMap&lt;MenuItem, List&lt;OrderItem&gt;&gt;</text>
+<line x1="0" y1="142" x2="440" y2="142" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> Table(tableId: int, capacity: int)</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> getTableId(): int | getCapacity(): int</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> isAvailableAt(time: LocalDateTime): boolean</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> reserveIfAvailable(time: LocalDateTime, res: Reservation): boolean</text>
+<text x="14" y="230" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="230" class="code-text" fill="#e2e8f0"> addReservation(res: Reservation): void</text>
+<text x="14" y="248" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="248" class="code-text" fill="#e2e8f0"> removeReservation(time: LocalDateTime): boolean</text>
+<text x="14" y="266" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="266" class="code-text" fill="#e2e8f0"> addOrder(item: MenuItem): OrderItem</text>
+<text x="14" y="284" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="284" class="code-text" fill="#e2e8f0"> addOrder(item: MenuItem, quantity: int): void</text>
+<text x="14" y="302" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="302" class="code-text" fill="#e2e8f0"> removeOrder(item: MenuItem): OrderItem</text>
+<text x="14" y="320" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="320" class="code-text" fill="#e2e8f0"> calculateBillAmount(): BigDecimal</text>
+<text x="14" y="338" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="338" class="code-text" fill="#e2e8f0"> getOrderedItems(): Map&lt;MenuItem, List&lt;OrderItem&gt;&gt;</text>
+</g>
+<g transform="translate(1460, 280)" class="shadow">
+<rect x="0" y="0" width="400" height="190" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 390 0 Q 400 0 400 10 L 400 48 L 0 48 Z" fill="url(#grad-pink)" />
+<text x="200.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;invoker&gt;&gt;</text>
+<text x="200.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">OrderManager</text>
+<g transform="translate(290, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">ConcurrentLinkedQueue</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> commandQueue: Queue&lt;OrderCommand&gt;</text>
+<line x1="0" y1="88" x2="400" y2="88" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="104" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="104" class="code-text" fill="#e2e8f0"> addCommand(command: OrderCommand): void</text>
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> executeCommands(): void</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> isQueueEmpty(): boolean</text>
+</g>
+<g transform="translate(1460, 550)" class="shadow">
+<rect x="0" y="0" width="400" height="140" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 390 0 Q 400 0 400 10 L 400 48 L 0 48 Z" fill="url(#grad-pink)" />
+<text x="200.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;interface&gt;&gt;</text>
+<text x="200.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">OrderCommand</text>
+<g transform="translate(290, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">Command Pattern</text>
+</g>
+<line x1="0" y1="70" x2="400" y2="70" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="86" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="86" class="code-text" fill="#e2e8f0"> execute(): void</text>
+</g>
+<g transform="translate(1460, 740)" class="shadow">
+<rect x="0" y="0" width="320" height="140" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 48 L 0 48 Z" fill="url(#grad-purple)" />
+<text x="160.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;command&gt;&gt;</text>
+<text x="160.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">SendToKitchenCommand</text>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> orderItem: OrderItem</text>
+<line x1="0" y1="88" x2="320" y2="88" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="104" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="104" class="code-text" fill="#e2e8f0"> SendToKitchenCommand(item: OrderItem)</text>
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> execute(): void</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> getOrderItem(): OrderItem</text>
+</g>
+<g transform="translate(1810, 740)" class="shadow">
+<rect x="0" y="0" width="320" height="140" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 48 L 0 48 Z" fill="url(#grad-purple)" />
+<text x="160.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;command&gt;&gt;</text>
+<text x="160.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">DeliverCommand</text>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> orderItem: OrderItem</text>
+<line x1="0" y1="88" x2="320" y2="88" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="104" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="104" class="code-text" fill="#e2e8f0"> DeliverCommand(item: OrderItem)</text>
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> execute(): void</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> getOrderItem(): OrderItem</text>
+</g>
+<g transform="translate(1460, 910)" class="shadow">
+<rect x="0" y="0" width="320" height="140" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 310 0 Q 320 0 320 10 L 320 48 L 0 48 Z" fill="url(#grad-purple)" />
+<text x="160.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;command&gt;&gt;</text>
+<text x="160.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">CancelCommand</text>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> orderItem: OrderItem</text>
+<line x1="0" y1="88" x2="320" y2="88" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="104" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="104" class="code-text" fill="#e2e8f0"> CancelCommand(item: OrderItem)</text>
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> execute(): void</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> getOrderItem(): OrderItem</text>
+</g>
+<g transform="translate(1540, 1130)" class="shadow">
+<rect x="0" y="0" width="380" height="250" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 370 0 Q 380 0 380 10 L 380 48 L 0 48 Z" fill="url(#grad-pink)" />
+<text x="190.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;receiver entity&gt;&gt;</text>
+<text x="190.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">OrderItem</text>
+<g transform="translate(270, 8)">
+<rect x="0" y="0" width="102" height="18" rx="4" fill="#0f172a" opacity="0.6" />
+<text x="51" y="13" font-size="8.5" font-weight="700" fill="#f8fafc" text-anchor="middle">volatile + synchronized</text>
+</g>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> item: MenuItem</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#f43f5e">-</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> status: volatile Status</text>
+<line x1="0" y1="106" x2="380" y2="106" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="122" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="122" class="code-text" fill="#e2e8f0"> OrderItem(item: MenuItem)</text>
+<text x="14" y="140" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="140" class="code-text" fill="#e2e8f0"> getItem(): MenuItem</text>
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> getStatus(): Status</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> synchronized sendToKitchen(): void</text>
+<text x="14" y="194" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="194" class="code-text" fill="#e2e8f0"> synchronized deliverToCustomer(): void</text>
+<text x="14" y="212" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="212" class="code-text" fill="#e2e8f0"> synchronized cancel(): void</text>
+</g>
+<g transform="translate(1960, 1130)" class="shadow">
+<rect x="0" y="0" width="200" height="170" rx="10" fill="#111827" stroke="#1e293b" stroke-width="1.8" />
+<path d="M 0 10 Q 0 0 10 0 L 190 0 Q 200 0 200 10 L 200 48 L 0 48 Z" fill="url(#grad-pink)" />
+<text x="100.0" y="19" font-size="10" font-weight="600" fill="#ffffff" opacity="0.9" text-anchor="middle" letter-spacing="1">&lt;&lt;enumeration&gt;&gt;</text>
+<text x="100.0" y="38" font-size="15" font-weight="700" fill="#ffffff" text-anchor="middle">Status</text>
+<text x="14" y="66" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="66" class="code-text" fill="#cbd5e1"> PENDING</text>
+<text x="14" y="84" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="84" class="code-text" fill="#cbd5e1"> SENT_TO_KITCHEN</text>
+<text x="14" y="102" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="102" class="code-text" fill="#cbd5e1"> DELIVERED</text>
+<text x="14" y="120" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="120" class="code-text" fill="#cbd5e1"> CANCELED</text>
+<line x1="0" y1="142" x2="200" y2="142" stroke="#1e293b" stroke-width="1.5" />
+<text x="14" y="158" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="158" class="code-text" fill="#e2e8f0"> values(): Status[]</text>
+<text x="14" y="176" class="code-text" font-weight="700" fill="#38bdf8">+</text>
+<text x="26" y="176" class="code-text" fill="#e2e8f0"> valueOf(name): Status</text>
+</g>
+<path d="M 830 260 L 390 260 L 390 310" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-emerald)" />
+<g transform="translate(490, 260)">
+            <rect x="-72.8" y="-10" width="145.6" height="20" rx="5" fill="#064e3b" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#a7f3d0" text-anchor="middle">delegates menu ops</text>
+        </g>
+<g transform="translate(405, 300)">
+            <rect x="-11.6" y="-10" width="23.2" height="20" rx="5" fill="#0b0f19" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">1</text>
+        </g>
+<path d="M 960 490 L 960 520 L 670 520 L 670 550" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+<g transform="translate(815, 520)">
+            <rect x="-83.60000000000001" y="-10" width="167.20000000000002" height="20" rx="5" fill="#78350f" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fde68a" text-anchor="middle">delegates booking ops</text>
+        </g>
+<path d="M 1170 490 L 1170 550" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-end="url(#arrow-sky)" />
+<g transform="translate(1170, 520)">
+            <rect x="-90.8" y="-10" width="181.6" height="20" rx="5" fill="#0c4a6e" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#bae6fd" text-anchor="middle">delegates table queries</text>
+        </g>
+<path d="M 1370 260 L 1460 260 L 1460 280" fill="none" stroke="#ec4899" stroke-width="1.8" marker-end="url(#arrow-pink)" />
+<g transform="translate(1415, 245)">
+            <rect x="-69.2" y="-10" width="138.4" height="20" rx="5" fill="#831843" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fbcfe8" text-anchor="middle">enqueues commands</text>
+        </g>
+<path d="M 225 470 L 225 550" fill="none" stroke="#10b981" stroke-width="1.8" marker-start="url(#diamond-emerald)" marker-end="url(#arrow-emerald)" />
+<g transform="translate(225, 510)">
+            <rect x="-65.6" y="-10" width="131.2" height="20" rx="5" fill="#064e3b" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#a7f3d0" text-anchor="middle">1 .. * (by name)</text>
+        </g>
+<path d="M 225 760 L 225 830" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-emerald)" />
+<g transform="translate(225, 795)">
+            <rect x="-51.2" y="-10" width="102.4" height="20" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">has category</text>
+        </g>
+<path d="M 1170 780 L 1170 850" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-start="url(#diamond-sky)" marker-end="url(#arrow-sky)" />
+<g transform="translate(1170, 815)">
+            <rect x="-65.6" y="-10" width="131.2" height="20" rx="5" fill="#0c4a6e" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#bae6fd" text-anchor="middle">organizes 1 .. *</text>
+        </g>
+<path d="M 890 640 L 950 640" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-amber)" />
+<g transform="translate(920, 630)">
+            <rect x="-33.2" y="-10" width="66.4" height="20" rx="5" fill="#78350f" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fde68a" text-anchor="middle">queries</text>
+        </g>
+<path d="M 670 800 L 670 870" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-start="url(#diamond-amber)" marker-end="url(#arrow-amber)" />
+<g transform="translate(670, 835)">
+            <rect x="-83.60000000000001" y="-10" width="167.20000000000002" height="20" rx="5" fill="#78350f" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fde68a" text-anchor="middle">owns Set&lt;Reservation&gt;</text>
+        </g>
+<path d="M 890 975 L 950 975" fill="none" stroke="#f59e0b" stroke-width="1.8" marker-end="url(#arrow-sky)" />
+<g transform="translate(920, 965)">
+            <rect x="-54.800000000000004" y="-10" width="109.60000000000001" height="20" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">assignedTable</text>
+        </g>
+<path d="M 1390 1015 L 1480 1015 L 1480 1220 L 1540 1220" fill="none" stroke="#0ea5e9" stroke-width="1.8" marker-start="url(#diamond-sky)" marker-end="url(#arrow-sky)" />
+<g transform="translate(1480, 1100)">
+            <rect x="-166.4" y="-10" width="332.8" height="20" rx="5" fill="#0c4a6e" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#bae6fd" text-anchor="middle">orderedItems: Map&lt;MenuItem, List&lt;OrderItem&gt;&gt;</text>
+        </g>
+<path d="M 1660 470 L 1660 550" fill="none" stroke="#ec4899" stroke-width="1.8" marker-start="url(#diamond-pink)" marker-end="url(#arrow-pink)" />
+<g transform="translate(1660, 510)">
+            <rect x="-47.6" y="-10" width="95.2" height="20" rx="5" fill="#831843" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fbcfe8" text-anchor="middle">queues FIFO</text>
+        </g>
+<path d="M 1620 740 L 1620 690" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-dasharray="6,5" marker-end="url(#realization)" />
+<path d="M 1880 740 L 1880 710 L 1760 710 L 1760 690" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-dasharray="6,5" marker-end="url(#realization)" />
+<path d="M 1580 910 L 1430 910 L 1430 620 L 1460 620" fill="none" stroke="#ec4899" stroke-width="1.8" stroke-dasharray="6,5" marker-end="url(#realization)" />
+<g transform="translate(1430, 770)">
+            <rect x="-44.0" y="-10" width="88.0" height="20" rx="5" fill="#831843" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#fbcfe8" text-anchor="middle">implements</text>
+        </g>
+<path d="M 1620 880 L 1620 1130" fill="none" stroke="#c084fc" stroke-width="1.8" marker-end="url(#arrow)" />
+<g transform="translate(1620, 990)">
+            <rect x="-90.8" y="-10" width="181.6" height="20" rx="5" fill="#581c87" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#e9d5ff" text-anchor="middle">invokes sendToKitchen()</text>
+        </g>
+<path d="M 1860 880 L 1860 1130" fill="none" stroke="#c084fc" stroke-width="1.8" marker-end="url(#arrow)" />
+<g transform="translate(1860, 990)">
+            <rect x="-105.2" y="-10" width="210.4" height="20" rx="5" fill="#581c87" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#e9d5ff" text-anchor="middle">invokes deliverToCustomer()</text>
+        </g>
+<path d="M 1700 1050 L 1700 1130" fill="none" stroke="#c084fc" stroke-width="1.8" marker-end="url(#arrow)" />
+<g transform="translate(1700, 1080)">
+            <rect x="-65.6" y="-10" width="131.2" height="20" rx="5" fill="#581c87" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#e9d5ff" text-anchor="middle">invokes cancel()</text>
+        </g>
+<path d="M 1540 1260 L 390 1260 L 390 660" fill="none" stroke="#10b981" stroke-width="1.8" marker-end="url(#arrow-emerald)" />
+<g transform="translate(850, 1260)">
+            <rect x="-119.60000000000001" y="-10" width="239.20000000000002" height="20" rx="5" fill="#064e3b" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#a7f3d0" text-anchor="middle">references MenuItem (immutable)</text>
+        </g>
+<path d="M 1920 1215 L 1960 1215" fill="none" stroke="#ec4899" stroke-width="1.8" marker-end="url(#arrow-pink)" />
+<g transform="translate(1940, 1205)">
+            <rect x="-29.6" y="-10" width="59.2" height="20" rx="5" fill="#0f172a" stroke="#334155" stroke-width="1" />
+            <text x="0" y="4" font-size="10.5" font-weight="600" fill="#cbd5e1" text-anchor="middle">status</text>
+        </g>
+<g transform="translate(60, 1420)">
+        <rect x="0" y="0" width="2080" height="130" rx="12" fill="#111827" stroke="#1e293b" stroke-width="1.5" class="shadow" />
+        
+        <!-- Panel 1: Facade Pattern -->
+        <g transform="translate(30, 20)">
+            <rect x="0" y="0" width="380" height="90" rx="8" fill="#1e1b4b" stroke="#3730a3" stroke-width="1.2" />
+            <text x="20" y="28" font-size="13" font-weight="700" fill="#a5b4fc">1. FACADE PATTERN (Restaurant)</text>
+            <text x="20" y="50" font-size="11" fill="#cbd5e1">• Central simplified front door into subsystems</text>
+            <text x="20" y="68" font-size="11" fill="#cbd5e1">• Completely stateless: owns NO internal maps/sets</text>
+            <text x="20" y="86" font-size="11" fill="#cbd5e1">• Pure delegation to Domain Managers &amp; Tables</text>
+        </g>
+
+        <!-- Panel 2: Command Pattern -->
+        <g transform="translate(440, 20)">
+            <rect x="0" y="0" width="480" height="90" rx="8" fill="#831843" stroke="#9d174d" stroke-width="1.2" />
+            <text x="20" y="28" font-size="13" font-weight="700" fill="#f472b6">2. COMMAND PATTERN (Order Lifecycle)</text>
+            <text x="20" y="50" font-size="11" fill="#cbd5e1">• Encapsulates state actions: SendToKitchen, Deliver, Cancel</text>
+            <text x="20" y="68" font-size="11" fill="#cbd5e1">• Invoker: OrderManager queues and drains commands FIFO</text>
+            <text x="20" y="86" font-size="11" fill="#cbd5e1">• Receiver: OrderItem enforces state transition guards</text>
+        </g>
+
+        <!-- Panel 3: Concurrency Blueprint -->
+        <g transform="translate(950, 20)">
+            <rect x="0" y="0" width="620" height="90" rx="8" fill="#064e3b" stroke="#047857" stroke-width="1.2" />
+            <text x="20" y="28" font-size="13" font-weight="700" fill="#34d399">3. SECTION 9 CONCURRENCY &amp; RACE CONDITION BLUEPRINT</text>
+            <text x="20" y="50" font-size="11" fill="#cbd5e1">• Table.reserveIfAvailable: putIfAbsent eliminates check-then-act double-booking</text>
+            <text x="20" y="68" font-size="11" fill="#cbd5e1">• Table Orders: ConcurrentHashMap + atomic compute/computeIfPresent per MenuItem</text>
+            <text x="20" y="86" font-size="11" fill="#cbd5e1">• OrderManager: ConcurrentLinkedQueue with atomic poll() drain loop</text>
+        </g>
+
+        <!-- Panel 4: UML Notation Legend -->
+        <g transform="translate(1600, 20)">
+            <rect x="0" y="0" width="450" height="90" rx="8" fill="#1e293b" stroke="#334155" stroke-width="1.2" />
+            <text x="20" y="28" font-size="13" font-weight="700" fill="#f8fafc">4. UML NOTATION LEGEND</text>
+            <text x="20" y="50" font-size="11" fill="#94a3b8">──◆ Composition / Aggregate Ownership</text>
+            <text x="20" y="68" font-size="11" fill="#94a3b8">──► Directed Association / Delegation</text>
+            <text x="20" y="86" font-size="11" fill="#94a3b8">- - ▷ Interface Realization / Implementation</text>
+        </g>
+    </g>
+</svg>
