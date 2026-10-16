@@ -1,0 +1,288 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 1200" width="100%" height="100%" style="background-color: #0f172a; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;">
+  <defs>
+    <style>
+      .title-text { font-size: 26px; font-weight: 700; fill: #f8fafc; letter-spacing: 0.5px; }
+      .subtitle-text { font-size: 14px; fill: #94a3b8; }
+      .pkg-header { font-size: 13px; font-weight: 600; fill: #38bdf8; text-transform: uppercase; letter-spacing: 1px; }
+      .class-box { fill: #1e293b; stroke: #334155; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .interface-box { fill: #1e293b; stroke: #0284c7; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .state-box { fill: #1e293b; stroke: #8b5cf6; stroke-width: 1.5; rx: 8; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.3)); }
+      .facade-box { fill: #1e293b; stroke: #10b981; stroke-width: 2; rx: 8; filter: drop-shadow(0 6px 10px rgba(16,185,129,0.2)); }
+      .class-title { font-size: 14px; font-weight: 700; fill: #f1f5f9; }
+      .class-stereotype { font-size: 11px; font-style: italic; fill: #38bdf8; }
+      .state-stereotype { font-size: 11px; font-style: italic; fill: #c084fc; }
+      .facade-stereotype { font-size: 11px; font-style: italic; fill: #34d399; }
+      .section-divider { stroke: #334155; stroke-width: 1; }
+      .field-text { font-size: 11px; fill: #cbd5e1; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+      .method-text { font-size: 11px; fill: #93c5fd; font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, monospace; }
+      .thread-safety-badge { font-size: 10px; font-weight: 600; fill: #fbbf24; }
+      .rel-line { stroke: #64748b; stroke-width: 1.5; fill: none; }
+      .rel-line-dashed { stroke: #64748b; stroke-width: 1.5; stroke-dasharray: 4,4; fill: none; }
+      .rel-text { font-size: 11px; fill: #94a3b8; font-weight: 500; }
+    </style>
+
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#64748b"/>
+    </marker>
+    <marker id="inheritance" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <polygon points="0 0, 11 6, 0 12" fill="#1e293b" stroke="#94a3b8" stroke-width="1.5"/>
+    </marker>
+    <marker id="realization" viewBox="0 0 12 12" refX="11" refY="6" markerWidth="8" markerHeight="8" orient="auto">
+      <polygon points="0 0, 11 6, 0 12" fill="#1e293b" stroke="#38bdf8" stroke-width="1.5"/>
+    </marker>
+    <marker id="diamond" viewBox="0 0 16 16" refX="0" refY="8" markerWidth="10" markerHeight="10" orient="auto">
+      <polygon points="0 8, 8 3, 16 8, 8 13" fill="#64748b"/>
+    </marker>
+  </defs>
+
+  <!-- Banner & Titles -->
+  <g transform="translate(60, 45)">
+    <text class="title-text" x="0" y="0">Vending Machine System — Complete Low-Level Design (LLD)</text>
+    <text class="subtitle-text" x="0" y="24">UML Architecture: State Pattern, Inventory Aggregation, Money Dispensation &amp; Facade Coordination</text>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 1: INVENTORY & PAYMENT (Top Left) & FACADE (Top Mid) & CASH (Top Right) -->
+  <!-- ========================================================================= -->
+
+  <!-- INVENTORY SUBSYSTEM -->
+  <g transform="translate(60, 100)">
+    <rect x="0" y="0" width="380" height="340" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="16" y="24">Package vending.inventory</text>
+
+    <!-- Item -->
+    <g transform="translate(16, 38)">
+      <rect class="class-box" width="165" height="135"/>
+      <text class="class-title" x="82" y="22" text-anchor="middle">Item</text>
+      <line class="section-divider" x1="0" y1="30" x2="165" y2="30"/>
+      <text class="field-text" x="8" y="48">- name: String</text>
+      <text class="field-text" x="8" y="64">- type: ItemType</text>
+      <text class="field-text" x="8" y="80">- price: BigDecimal</text>
+      <line class="section-divider" x1="0" y1="90" x2="165" y2="90"/>
+      <text class="method-text" x="8" y="108">+ getName(): String</text>
+      <text class="method-text" x="8" y="124">+ getPrice(): BigDecimal</text>
+    </g>
+
+    <!-- ItemType Enum -->
+    <g transform="translate(195, 38)">
+      <rect class="class-box" width="165" height="135" stroke="#f59e0b"/>
+      <text class="class-stereotype" x="82" y="18" text-anchor="middle">&lt;&lt;enum&gt;&gt;</text>
+      <text class="class-title" x="82" y="34" text-anchor="middle">ItemType</text>
+      <line class="section-divider" x1="0" y1="42" x2="165" y2="42"/>
+      <text class="field-text" x="14" y="62">+ BEVERAGE</text>
+      <text class="field-text" x="14" y="80">+ SNACK</text>
+      <text class="field-text" x="14" y="98">+ CHOCOLATE</text>
+      <text class="field-text" x="14" y="116">+ CANDY</text>
+    </g>
+
+    <!-- ItemShelf -->
+    <g transform="translate(16, 185)">
+      <rect class="class-box" width="344" height="135"/>
+      <text class="class-title" x="172" y="22" text-anchor="middle">ItemShelf / Inventory</text>
+      <line class="section-divider" x1="0" y1="30" x2="344" y2="30"/>
+      <text class="field-text" x="10" y="48">- aisles: Map&lt;String, ItemShelf&gt;</text>
+      <text class="field-text" x="10" y="64">- item: Item | code: String | quantity: int</text>
+      <line class="section-divider" x1="0" y1="74" x2="344" y2="74"/>
+      <text class="method-text" x="10" y="92">+ addItem(code: String, item: Item, qty: int): void</text>
+      <text class="method-text" x="10" y="108">+ getItem(code: String): Item | isAvailable(code): boolean</text>
+      <text class="method-text" x="10" y="124">+ deductQuantity(code: String): void</text>
+    </g>
+  </g>
+
+  <!-- VENDING MACHINE (FACADE / CONTEXT) -->
+  <g transform="translate(480, 100)">
+    <rect class="facade-box" width="450" height="340"/>
+    <text class="facade-stereotype" x="225" y="20" text-anchor="middle">&lt;&lt;Facade / Context&gt;&gt;</text>
+    <text class="class-title" x="225" y="38" text-anchor="middle">VendingMachine</text>
+    <line class="section-divider" x1="0" y1="46" x2="450" y2="46"/>
+    
+    <text class="field-text" x="14" y="64">- state: VendingMachineState <tspan fill="#6ee7b7">(current session state)</tspan></text>
+    <text class="field-text" x="14" y="80">- inventory: Inventory</text>
+    <text class="field-text" x="14" y="96">- cashManager: CashManager</text>
+    <text class="field-text" x="14" y="112">- currentBalance: BigDecimal</text>
+    <text class="field-text" x="14" y="128">- selectedItemCode: String</text>
+    
+    <line class="section-divider" x1="0" y1="138" x2="450" y2="138"/>
+    <text class="method-text" x="14" y="156">+ insertCoin(coin: Coin): void</text>
+    <text class="method-text" x="14" y="172">+ insertNote(note: Note): void</text>
+    <text class="method-text" x="14" y="188">+ pressSelectButton(): void</text>
+    <text class="method-text" x="14" y="204">+ enterItemCode(code: String): void</text>
+    <text class="method-text" x="14" y="220">+ dispenseItem(code: String): void</text>
+    <text class="method-text" x="14" y="236">+ cancelTransaction(): List&lt;Coin&gt;</text>
+    <text class="method-text" x="14" y="252">+ returnChange(changeAmount: BigDecimal): List&lt;Coin&gt;</text>
+    <text class="method-text" x="14" y="268">+ transitionToState(nextState: VendingMachineState): void</text>
+    <text class="method-text" x="14" y="284">+ resetBalance(): void | addBalance(amount: BigDecimal): void</text>
+    <text class="method-text" x="14" y="300">+ getInventory(): Inventory | getCashManager(): CashManager</text>
+  </g>
+
+  <!-- CASH & PAYMENT SUBSYSTEM (Right) -->
+  <g transform="translate(970, 100)">
+    <rect x="0" y="0" width="570" height="340" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="20" y="24">Package vending.cash</text>
+
+    <!-- CashManager -->
+    <g transform="translate(20, 40)">
+      <rect class="class-box" width="300" height="270"/>
+      <text class="class-title" x="150" y="22" text-anchor="middle">CashManager</text>
+      <text class="thread-safety-badge" x="150" y="36" text-anchor="middle">[Thread-Safe: Atomic Cash Reserve]</text>
+      <line class="section-divider" x1="0" y1="44" x2="300" y2="44"/>
+      <text class="field-text" x="10" y="62">- coinInventory: Map&lt;Coin, Integer&gt;</text>
+      <text class="field-text" x="10" y="78">- noteInventory: Map&lt;Note, Integer&gt;</text>
+      <text class="field-text" x="10" y="94">- lock: ReentrantLock</text>
+      <line class="section-divider" x1="0" y1="104" x2="300" y2="104"/>
+      <text class="method-text" x="10" y="124">+ acceptCoin(coin: Coin): void</text>
+      <text class="method-text" x="10" y="142">+ acceptNote(note: Note): void</text>
+      <text class="method-text" x="10" y="160">+ calculateChange(change: BigDecimal): List&lt;Coin&gt;</text>
+      <text class="method-text" x="10" y="178">+ hasSufficientChange(change: BigDecimal): boolean</text>
+      <text class="method-text" x="10" y="196">+ dispenseChange(change: BigDecimal): List&lt;Coin&gt;</text>
+      <text class="field-text" x="16" y="220" fill="#fbbf24">↳ Greedy coin change algorithm</text>
+      <text class="field-text" x="16" y="236" fill="#fbbf24">   deducts denomination stock safely</text>
+    </g>
+
+    <!-- Coin Enum -->
+    <g transform="translate(340, 40)">
+      <rect class="class-box" width="200" height="125" stroke="#f59e0b"/>
+      <text class="class-stereotype" x="100" y="18" text-anchor="middle">&lt;&lt;enum&gt;&gt;</text>
+      <text class="class-title" x="100" y="34" text-anchor="middle">Coin</text>
+      <line class="section-divider" x1="0" y1="42" x2="200" y2="42"/>
+      <text class="field-text" x="14" y="60">+ PENNY (0.01)</text>
+      <text class="field-text" x="14" y="78">+ NICKEL (0.05)</text>
+      <text class="field-text" x="14" y="96">+ DIME (0.10)</text>
+      <text class="field-text" x="14" y="114">+ QUARTER (0.25)</text>
+    </g>
+
+    <!-- Note Enum -->
+    <g transform="translate(340, 180)">
+      <rect class="class-box" width="200" height="130" stroke="#f59e0b"/>
+      <text class="class-stereotype" x="100" y="18" text-anchor="middle">&lt;&lt;enum&gt;&gt;</text>
+      <text class="class-title" x="100" y="34" text-anchor="middle">Note</text>
+      <line class="section-divider" x1="0" y1="42" x2="200" y2="42"/>
+      <text class="field-text" x="14" y="60">+ ONE (1.00)</text>
+      <text class="field-text" x="14" y="78">+ FIVE (5.00)</text>
+      <text class="field-text" x="14" y="96">+ TEN (10.00)</text>
+      <text class="field-text" x="14" y="114">+ TWENTY (20.00)</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- ROW 2: STATE PATTERN HIERARCHY (Bottom Half)                              -->
+  <!-- ========================================================================= -->
+  <g transform="translate(60, 500)">
+    <rect x="0" y="0" width="1480" height="640" rx="10" fill="#131d31" stroke="#1e293b" stroke-dasharray="6,6"/>
+    <text class="pkg-header" x="24" y="28">Package vending.state (State Pattern Architecture)</text>
+
+    <!-- Base Abstract State -->
+    <g transform="translate(540, 50)">
+      <rect class="state-box" width="400" height="160"/>
+      <text class="state-stereotype" x="200" y="18" text-anchor="middle">&lt;&lt;interface / abstract base&gt;&gt;</text>
+      <text class="class-title" x="200" y="36" text-anchor="middle">VendingMachineState</text>
+      <line class="section-divider" x1="0" y1="44" x2="400" y2="44"/>
+      <text class="method-text" x="14" y="64">+ insertCoin(vm: VendingMachine, coin: Coin): void</text>
+      <text class="method-text" x="14" y="82">+ insertNote(vm: VendingMachine, note: Note): void</text>
+      <text class="method-text" x="14" y="100">+ pressSelectButton(vm: VendingMachine): void</text>
+      <text class="method-text" x="14" y="118">+ enterItemCode(vm: VendingMachine, code: String): void</text>
+      <text class="method-text" x="14" y="136">+ dispenseItem(vm: VendingMachine, code: String): void</text>
+      <text class="method-text" x="14" y="152">+ cancelTransaction(vm: VendingMachine): void</text>
+    </g>
+
+    <!-- State 1: IdleState -->
+    <g transform="translate(30, 270)">
+      <rect class="state-box" width="320" height="280"/>
+      <text class="class-title" x="160" y="24" text-anchor="middle">IdleState</text>
+      <line class="section-divider" x1="0" y1="34" x2="320" y2="34"/>
+      <text class="field-text" x="10" y="52">Ready for money insertion or browsing</text>
+      <line class="section-divider" x1="0" y1="62" x2="320" y2="62"/>
+      <text class="method-text" x="10" y="82">+ insertCoin(vm, coin): void</text>
+      <text class="field-text" x="18" y="100" fill="#a7f3d0">↳ adds balance -&gt; HasMoneyState</text>
+      <text class="method-text" x="10" y="122">+ insertNote(vm, note): void</text>
+      <text class="field-text" x="18" y="140" fill="#a7f3d0">↳ adds balance -&gt; HasMoneyState</text>
+      <text class="method-text" x="10" y="162">+ pressSelectButton(vm): void</text>
+      <text class="field-text" x="18" y="180" fill="#a7f3d0">↳ direct select -&gt; ItemSelectedState</text>
+      <text class="method-text" x="10" y="202">+ enterItemCode(vm, code): invalid</text>
+      <text class="method-text" x="10" y="222">+ dispenseItem(vm, code): invalid</text>
+      <text class="method-text" x="10" y="242">+ cancelTransaction(vm): no-op</text>
+    </g>
+
+    <!-- State 2: HasMoneyState -->
+    <g transform="translate(390, 270)">
+      <rect class="state-box" width="320" height="280"/>
+      <text class="class-title" x="160" y="24" text-anchor="middle">HasMoneyState</text>
+      <line class="section-divider" x1="0" y1="34" x2="320" y2="34"/>
+      <text class="field-text" x="10" y="52">Accumulating money or choosing item</text>
+      <line class="section-divider" x1="0" y1="62" x2="320" y2="62"/>
+      <text class="method-text" x="10" y="82">+ insertCoin(vm, coin): adds to balance</text>
+      <text class="method-text" x="10" y="102">+ insertNote(vm, note): adds to balance</text>
+      <text class="method-text" x="10" y="122">+ pressSelectButton(vm): void</text>
+      <text class="field-text" x="18" y="140" fill="#a7f3d0">↳ transitions -&gt; ItemSelectedState</text>
+      <text class="method-text" x="10" y="162">+ cancelTransaction(vm): void</text>
+      <text class="field-text" x="18" y="180" fill="#fca5a5">↳ refunds balance -&gt; IdleState</text>
+      <text class="method-text" x="10" y="202">+ enterItemCode(vm, code): invalid</text>
+      <text class="method-text" x="10" y="222">+ dispenseItem(vm, code): invalid</text>
+    </g>
+
+    <!-- State 3: ItemSelectedState -->
+    <g transform="translate(750, 270)">
+      <rect class="state-box" width="330" height="280"/>
+      <text class="class-title" x="165" y="24" text-anchor="middle">ItemSelectedState</text>
+      <line class="section-divider" x1="0" y1="34" x2="330" y2="34"/>
+      <text class="field-text" x="10" y="52">Validates inventory &amp; fund sufficiency</text>
+      <line class="section-divider" x1="0" y1="62" x2="330" y2="62"/>
+      <text class="method-text" x="10" y="82">+ enterItemCode(vm, code): void</text>
+      <text class="field-text" x="18" y="100">↳ verifies availability &amp; price</text>
+      <text class="field-text" x="18" y="118" fill="#a7f3d0">↳ if balance &gt;= price: -&gt; DispenseState</text>
+      <text class="field-text" x="18" y="136" fill="#fca5a5">↳ if balance &lt; price: prompt add money</text>
+      <text class="method-text" x="10" y="158">+ insertCoin(vm, coin): adds balance</text>
+      <text class="method-text" x="10" y="178">+ insertNote(vm, note): adds balance</text>
+      <text class="method-text" x="10" y="198">+ cancelTransaction(vm): void</text>
+      <text class="field-text" x="18" y="216" fill="#fca5a5">↳ refunds balance -&gt; IdleState</text>
+    </g>
+
+    <!-- State 4: DispenseState -->
+    <g transform="translate(1120, 270)">
+      <rect class="state-box" width="320" height="280"/>
+      <text class="class-title" x="160" y="24" text-anchor="middle">DispenseState</text>
+      <line class="section-divider" x1="0" y1="34" x2="320" y2="34"/>
+      <text class="field-text" x="10" y="52">Ejects item &amp; calculates change return</text>
+      <line class="section-divider" x1="0" y1="62" x2="320" y2="62"/>
+      <text class="method-text" x="10" y="82">+ dispenseItem(vm, code): void</text>
+      <text class="field-text" x="18" y="100" fill="#a7f3d0">↳ deducts inventory stock</text>
+      <text class="field-text" x="18" y="118" fill="#a7f3d0">↳ calculates change = balance - price</text>
+      <text class="field-text" x="18" y="136" fill="#a7f3d0">↳ dispenses coins via CashManager</text>
+      <text class="field-text" x="18" y="154" fill="#a7f3d0">↳ resets balance -&gt; IdleState</text>
+      <text class="method-text" x="10" y="176">+ insertCoin(vm, coin): invalid</text>
+      <text class="method-text" x="10" y="196">+ cancelTransaction(vm): invalid</text>
+    </g>
+  </g>
+
+  <!-- ========================================================================= -->
+  <!-- RELATIONSHIP CONNECTORS & ANNOTATIONS                                     -->
+  <!-- ========================================================================= -->
+
+  <!-- VendingMachine aggregates Inventory -->
+  <path class="rel-line" marker-start="url(#diamond)" d="M 480 200 L 440 200"/>
+  <text class="rel-text" x="444" y="192">has</text>
+
+  <!-- VendingMachine aggregates CashManager -->
+  <path class="rel-line" marker-start="url(#diamond)" d="M 930 200 L 970 200"/>
+  <text class="rel-text" x="936" y="192">has</text>
+
+  <!-- VendingMachine has current state -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 740 440 L 740 550"/>
+  <text class="rel-text" x="748" y="495">delegates to state</text>
+
+  <!-- Concrete States inherit VendingMachineState -->
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 190 770 L 190 730 L 740 730 L 740 710"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 550 770 L 550 730 L 740 730"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 915 770 L 915 730 L 740 730"/>
+  <path class="rel-line-dashed" marker-end="url(#inheritance)" d="M 1280 770 L 1280 730 L 740 730"/>
+
+  <!-- Inventory contains Item -->
+  <path class="rel-line" marker-start="url(#diamond)" d="M 180 285 L 180 235 L 98 235 L 98 173"/>
+
+  <!-- Item references ItemType -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 181 105 L 195 105"/>
+
+  <!-- CashManager uses Coin and Note -->
+  <path class="rel-line" marker-end="url(#arrow)" d="M 1270 100 L 1310 100"/>
+  <path class="rel-line" marker-end="url(#arrow)" d="M 1270 240 L 1310 240"/>
+</svg>
