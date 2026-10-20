@@ -81,7 +81,7 @@ public class CustomHashMap<K, V> {
 		return (n < 0) ? 1 : (n >= MAXIMUM_CAPACITY) ? MAXIMUM_CAPACITY : n + 1;
 	}
 
-	public void put(K key, V value) {
+	public V put(K key, V value) {
 		int hash = hash(key);
 		int index = getIndex(hash);
 		Node<K, V> current = buckets[index];
@@ -89,8 +89,9 @@ public class CustomHashMap<K, V> {
 		// Update an existing mapping.
 		while (current != null) {
 			if (current.hash == hash && Objects.equals(current.key, key)) {
+				V oldValue = current.value;
 				current.value = value;
-				return;
+				return oldValue;
 			}
 			current = current.next;
 		}
@@ -104,6 +105,8 @@ public class CustomHashMap<K, V> {
 		if (size > threshold && buckets.length < MAXIMUM_CAPACITY) {
 			resize();
 		}
+
+		return null;
 	}
 
 	public V get(K key) {
@@ -182,7 +185,7 @@ public class CustomHashMap<K, V> {
 		Node<K, V>[] oldBuckets = buckets;
 
 		// Step 5: Create a new, larger bucket array.
-		Node<K, V>[] newBuckets = (Node<K, V>[]) new Node[newCapacity];
+		Node<K, V>[] newBuckets = new Node[newCapacity];
 
 		// Step 6: Visit every bucket in the old array.
 		for (Node<K, V> head : oldBuckets) {
@@ -202,6 +205,8 @@ public class CustomHashMap<K, V> {
 
 				// Step 9: Link this existing node into its new bucket.
 				// Insert at the beginning of the new bucket's list.
+				// Line 209 explain: jaha cur ja ra hai vaha 1 node alredy pada hai aur pade hue
+				// node ka address newBuckets[newIndex] me hai
 				current.next = newBuckets[newIndex];
 				newBuckets[newIndex] = current;
 
